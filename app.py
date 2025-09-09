@@ -525,10 +525,10 @@ def render_about_section():
 
             <h4 style="color: #667eea !important; margin-top: 2rem;">Industry Focus:</h4>
             <ul class="service-features">
-              	<li style="color: #555 !important;">>Manufacturing &amp; Automotive</li>
-			  	<li style="color: #555 !important;">>Healthcare &amp; Life Sciences</li>
-				<li style="color: #555 !important;">>Retail &amp; Consumer Goods</li>
-				<li style="color: #555 !important;">>Energy &amp; Utilities</li>
+              	<li style="color: #555 !important;">Manufacturing &amp; Automotive</li>
+			  	<li style="color: #555 !important;">Healthcare &amp; Life Sciences</li>
+				<li style="color: #555 !important;">Retail &amp; Consumer Goods</li>
+				<li style="color: #555 !important;">Energy &amp; Utilities</li>
             </ul>
         </div>
         """
