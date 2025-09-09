@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Page configuration
 st.set_page_config(
-    page_title="SRK Solutions - SAP Consulting & GenAI Automation",
+    page_title="Susthira AI - SAP Consulting & GenAI Automation",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -306,7 +306,7 @@ def render_hero_section():
     """Render the hero section"""
     hero_html = """
     <div class="hero-section">
-        <h1 class="hero-title">SRK Solutions</h1>
+        <h1 class="hero-title">Susthira AI</h1>
         <p class="hero-subtitle">Transform Your Business with Expert SAP Consulting & GenAI Automation</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; color: white;">
             Specializing in SAP Basis, ABAP Development, and Functional Consulting with cutting-edge GenAI integration
@@ -451,7 +451,7 @@ def render_stats_section():
     stats_html = """
     <div class="stats-container">
         <div style="text-align: center; margin-bottom: 2rem;">
-            <h2 style="margin-bottom: 1rem; color: white;">Why Choose SRK Solutions?</h2>
+            <h2 style="margin-bottom: 1rem; color: white;">Why Choose Susthira AI?</h2>
             <p style="font-size: 1.2rem; opacity: 0.9; color: white;">Proven track record of delivering exceptional SAP solutions</p>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
@@ -479,7 +479,7 @@ def render_stats_section():
 def render_about_section():
     """Render about section"""
     st.markdown('<div id="about"></div>', unsafe_allow_html=True)
-    st.markdown("## 🏢 About SRK Solutions")
+    st.markdown("## 🏢 About Susthira AI")
 
     col1, col2 = st.columns([2, 1])
 
@@ -487,7 +487,7 @@ def render_about_section():
         about_html = """
         <div class="service-card white-container">
             <p style="font-size: 1.1rem; line-height: 1.8; color: #555 !important;">
-                At <strong style="color: #333 !important;">SRK Solutions</strong>, we are passionate about transforming businesses through 
+                At <strong style="color: #333 !important;">Susthira AI</strong>, we are passionate about transforming businesses through 
                 innovative SAP consulting and cutting-edge GenAI automation. With over a decade of experience 
                 in the SAP ecosystem, our team of certified consultants specializes in delivering comprehensive 
                 solutions that drive efficiency, reduce costs, and accelerate digital transformation.
@@ -646,10 +646,10 @@ def render_footer():
     """Render footer"""
     footer_html = """
     <div style="background: #333; color: white; padding: 2rem; border-radius: 20px; margin-top: 3rem; text-align: center;">
-        <h3 style="margin-bottom: 1rem; color: white;">SRK Solutions</h3>
+        <h3 style="margin-bottom: 1rem; color: white;">Susthira AI</h3>
         <p style="opacity: 0.8; margin-bottom: 1rem; color: white;">Transforming Businesses Through Expert SAP Consulting & GenAI Innovation</p>
         <p style="opacity: 0.6; font-size: 0.9rem; color: white;">
-            © 2025 SRK Solutions. All rights reserved. | Privacy Policy | Terms of Service
+            © 2025 Susthira AI. All rights reserved. | Privacy Policy | Terms of Service
         </p>
     </div>
     """
