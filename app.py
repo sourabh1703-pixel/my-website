@@ -614,7 +614,7 @@ def render_contact_section():
         contact_info_html = """
         <div style="text-align: center; padding: 1rem;">
             <h4 style="color: #667eea !important;">📧 Email</h4>
-            <p style="color: #555 !important;">info@sapmaster-solutions.com</p>
+            <p style="color: #555 !important;">susthira.ai.1@gmail.com</p>
             <p style="color: #555 !important;">support@sapmaster-solutions.com</p>
         </div>
         """
@@ -624,7 +624,7 @@ def render_contact_section():
         contact_info_html = """
         <div style="text-align: center; padding: 1rem;">
             <h4 style="color: #667eea !important;">📱 Phone</h4>
-            <p style="color: #555 !important;">+1 (555) 123-4567</p>
+            <p style="color: #555 !important;">+91 (860) 245-9300</p>
             <p style="color: #555 !important;">+1 (555) 987-6543</p>
         </div>
         """
@@ -649,7 +649,7 @@ def render_footer():
         <h3 style="margin-bottom: 1rem; color: white;">SAPMaster Solutions</h3>
         <p style="opacity: 0.8; margin-bottom: 1rem; color: white;">Transforming Businesses Through Expert SAP Consulting & GenAI Innovation</p>
         <p style="opacity: 0.6; font-size: 0.9rem; color: white;">
-            © 2024 SAPMaster Solutions. All rights reserved. | Privacy Policy | Terms of Service
+            © 2025 SAPMaster Solutions. All rights reserved. | Privacy Policy | Terms of Service
         </p>
     </div>
     """
