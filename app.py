@@ -456,11 +456,11 @@ def render_stats_section():
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
             <div class="stat-item">
-                <span class="stat-number">150+</span>
+                <span class="stat-number">20+</span>
                 <span class="stat-label">Projects Completed</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">50+</span>
+                <span class="stat-number">10+</span>
                 <span class="stat-label">Happy Clients</span>
             </div>
             <div class="stat-item">
@@ -468,7 +468,7 @@ def render_stats_section():
                 <span class="stat-label">Years Experience</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">99%</span>
+                <span class="stat-number">100%</span>
                 <span class="stat-label">Success Rate</span>
             </div>
         </div>
