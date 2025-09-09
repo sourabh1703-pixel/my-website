@@ -615,7 +615,6 @@ def render_contact_section():
         <div style="text-align: center; padding: 1rem;">
             <h4 style="color: #667eea !important;">📧 Email</h4>
             <p style="color: #555 !important;">susthira.ai.1@gmail.com</p>
-            <p style="color: #555 !important;">support@SRK-solutions.com</p>
         </div>
         """
         st.markdown(contact_info_html, unsafe_allow_html=True)
