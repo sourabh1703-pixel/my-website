@@ -511,28 +511,34 @@ def render_about_section():
         st.markdown(about_html, unsafe_allow_html=True)
 
     with col2:
-        certifications_html = """
-        <div class="service-card white-container">
-            <h3 class="service-title" style="color: #667eea !important;">🏆 Certifications & Partnerships</h3>
-            <ul class="service-features">
-                <li style="color: #555 !important;">SAP Certified Technology Consultant</li>
-                <li style="color: #555 !important;">SAP Certified Development Specialist</li>
-                <li style="color: #555 !important;">SAP Certified Application Associate</li>
-                <li style="color: #555 !important;">Microsoft Azure AI Engineer</li>
-                <li style="color: #555 !important;">AWS Machine Learning Specialty</li>
-                <li style="color: #555 !important;">Google Cloud AI/ML Professional</li>
-            </ul>
+        # Using Streamlit native approach to avoid HTML parsing issues
+        st.markdown("### 🏆 Certifications & Partnerships")
+        
+        certifications = [
+            "SAP Certified Technology Consultant",
+            "SAP Certified Development Specialist",
+            "SAP Certified Application Associate",
+            "Microsoft Azure AI Engineer",
+            "AWS Machine Learning Specialty",
+            "Google Cloud AI/ML Professional"
+        ]
+        
+        for cert in certifications:
+            st.markdown(f"✅ {cert}")
+        
+        st.markdown("#### Industry Focus:")
+        
+        industries = [
+            "Manufacturing & Automotive", 
+            "Financial Services",
+            "Healthcare & Life Sciences",
+            "Retail & Consumer Goods",
+            "Energy & Utilities"
+        ]
+        
+        for industry in industries:
+            st.markdown(f"✅ {industry}")
 
-            <h4 style="color: #667eea !important; margin-top: 2rem;">Industry Focus:</h4>
-            <ul class="service-features">
-              	<li style="color: #555 !important;">Manufacturing & Automotive</li>
-			  	<li style="color: #555 !important;">Healthcare & Life Sciences</li>
-				<li style="color: #555 !important;">Retail & Consumer Goods</li>
-				<li style="color: #555 !important;">Energy & Utilities</li>
-            </ul>
-        </div>
-        """
-        st.markdown(certifications_html, unsafe_allow_html=True)
 
 def render_contact_section():
     """Render contact section"""
