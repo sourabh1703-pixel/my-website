@@ -307,7 +307,7 @@ def render_hero_section():
     hero_html = """
     <div class="hero-section">
         <h1 class="hero-title">Susthira AI</h1>
-        <p class="hero-subtitle">Transform Your Business with Expert SAP Consulting & GenAI Automation</p>
+        <p class="hero-subtitle">Transform Your Business with Expert SAP Consulting & GenAI Automation in a Stable-Susthira Way</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; color: white;">
             Specializing in SAP Basis, ABAP Development, and Functional Consulting with cutting-edge GenAI integration
         </p>
