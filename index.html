@@ -291,11 +291,11 @@
     }
 
     .quick-actions {
-      display: grid;
-      gap: 12px;
+    display: grid;
+    gap: 12px;
     }
 
-    .quick-btn {
+     .quick-btn {
       width: 100%;
       display: flex;
       align-items: center;
@@ -521,7 +521,7 @@
       100% { background-position: 100% 50%; }
     }
 
-    .caption {
+    .caption {2
       margin-top: 14px;
       background: rgba(12, 35, 64, 0.91);
       color: #fff;
@@ -818,6 +818,96 @@
       .quick-btn {
         padding: 12px 14px;
       }
+     } 
+    
+    .home-image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .home-image-modal.show {
+      display: flex;
+    }
+
+    .home-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 25, 46, 0.72);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .home-image-popup {
+      position: relative;
+      z-index: 1;
+      width: min(700px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      padding: 14px;
+      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid rgba(24, 169, 87, 0.35);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .home-image-popup img {
+      display: block;
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #edf9f1;
+    }
+
+    .home-image-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: #0c2340;
+      color: #ffffff;
+      font-size: 29px;
+      line-height: 34px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .home-image-close:hover {
+      background: #159451;
+    }
+
+    body.home-popup-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 620px) {
+      .home-image-modal {
+        padding: 14px;
+      }
+
+      .home-image-popup {
+        padding: 10px;
+        border-radius: 18px;
+      }
+
+      .home-image-popup img {
+        max-height: 75vh;
+        border-radius: 12px;
+      }
+
+      .home-image-close {
+        top: -9px;
+        right: -7px;
+      }
     }
   </style>
 </head>
@@ -878,35 +968,54 @@
           <p class="quick-panel-text" data-i18n="quickText">Choose an option and connect directly on WhatsApp.</p>
 
           <div class="quick-actions">
-            <a class="quick-btn quick-btn-free" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20try%20it%20for%20free." target="_blank" rel="noopener">
-              <span class="quick-btn-icon whatsapp-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32">
-                  <path fill="currentColor" d="M16 3.1a12.7 12.7 0 0 0-10.9 19.2L3.5 28.5l6.4-1.7A12.8 12.8 0 1 0 16 3.1Zm0 23.2a10.5 10.5 0 0 1-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4A10.6 10.6 0 1 1 16 26.3Zm5.8-7.9c-.3-.2-1.8-.9-2.1-1s-.5-.2-.8.2-.9 1-1.1 1.2-.4.3-.7.1a8.5 8.5 0 0 1-2.5-1.5 9.6 9.6 0 0 1-1.8-2.3c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6s0-.5 0-.7c-.1-.2-.8-1.9-1-2.6-.3-.7-.5-.6-.8-.6h-.7c-.2 0-.7.1-1 .5s-1.4 1.3-1.4 3.3 1.4 3.9 1.6 4.2 2.8 4.3 6.8 6c1 .4 1.8.6 2.4.7 1 .3 1.9.2 2.6.1.8-.1 2.5-1 2.8-2s.4-1.9.3-2.1-.2-.3-.6-.5Z"/>
-                </svg>
-              </span>
-              <span data-i18n="freeTry">Free Try</span>
-            </a>
 
-            <a class="quick-btn" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20send%20a%20voice%20message." target="_blank" rel="noopener">
-              <span class="quick-btn-icon">🎙️</span>
-              <span data-i18n="voiceMessage">Voice Message</span>
-            </a>
+  <!-- Free Try: Isko popup nahi banana hai. Yeh WhatsApp hi open karega. -->
+  <a class="quick-btn quick-btn-free" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20try%20it%20for%20free." target="_blank" rel="noopener">
+    <span class="quick-btn-icon whatsapp-icon" aria-hidden="true">
+      <svg viewBox="0 0 32 32">
+        <path fill="currentColor" d="M16 3.1a12.7 12.7 0 0 0-10.9 19.2L3.5 28.5l6.4-1.7A12.8 12.8 0 1 0 16 3.1Zm0 23.2a10.5 10.5 0 0 1-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4A10.6 10.6 0 1 1 16 26.3Zm5.8-7.9c-.3-.2-1.8-.9-2.1-1s-.5-.2-.8.2-.9 1-1.1 1.2-.4.3-.7.1a8.5 8.5 0 0 1-2.5-1.5 9.6 9.6 0 0 1-1.8-2.3c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6s0-.5 0-.7c-.1-.2-.8-1.9-1-2.6-.3-.7-.5-.6-.8-.6h-.7c-.2 0-.7.1-1 .5s-1.4 1.3-1.4 3.3 1.4 3.9 1.6 4.2 2.8 4.3 6.8 6c1 .4 1.8.6 2.4.7 1 .3 1.9.2 2.6.1.8-.1 2.5-1 2.8-2s.4-1.9.3-2.1-.2-.3-.6-.5Z"/>
+      </svg>
+    </span>
+    <span data-i18n="freeTry">Free Try</span>
+  </a>
 
-            <a class="quick-btn" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20send%20a%20text%20message." target="_blank" rel="noopener">
-              <span class="quick-btn-icon">💬</span>
-              <span data-i18n="textMessage">Text Message</span>
-            </a>
+  <button
+    class="quick-btn"
+    type="button"
+    onclick="openHomeImagePopup('./voice.jpg', 'Voice Message')"
+  >
+    <span class="quick-btn-icon">🎙️</span>
+    <span data-i18n="voiceMessage">Voice Message</span>
+  </button>
 
-            <a class="quick-btn" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20generate%20a%20PDF%20report." target="_blank" rel="noopener">
-              <span class="quick-btn-icon">📄</span>
-              <span data-i18n="pdfGenerate">PDF Generate</span>
-            </a>
+  <button
+    class="quick-btn"
+    type="button"
+    onclick="openHomeImagePopup('./text.png', 'Text Message')"
+  >
+    <span class="quick-btn-icon">💬</span>
+    <span data-i18n="textMessage">Text Message</span>
+  </button>
 
-            <a class="quick-btn" href="#hisaab">
-              <span class="quick-btn-icon">📦</span>
-              <span data-i18n="stock">Stock</span>
-            </a>
-          </div>
+  <button
+    class="quick-btn"
+    type="button"
+    onclick="openHomeImagePopup('./pdf.jpg', 'PDF Generate')"
+  >
+    <span class="quick-btn-icon">📄</span>
+    <span data-i18n="pdfGenerate">PDF Generate</span>
+  </button>
+
+  <button
+    class="quick-btn"
+    type="button"
+    onclick="openHomeImagePopup('./stock.jpg', 'Stock')"
+  >
+    <span class="quick-btn-icon">📦</span>
+    <span data-i18n="stock">Stock</span>
+  </button>
+
+</div>
         </aside>
       </div>
     </section>
@@ -922,12 +1031,12 @@
         <div class="hisaab-wrap">
           <div class="feature-list reveal">
             <div class="feature-heading" data-i18n="featureHeading">Your Business. Your Hisaab. Your WhatsApp.</div>
-            <button class="feature-btn" onclick="showToast('Sales & Purchase selected')"><span class="feature-icon">📒</span><span data-i18n="sales">Sales &amp; Purchase</span></button>
-            <button class="feature-btn" onclick="showToast('Cash Flow selected')"><span class="feature-icon">💰</span><span data-i18n="cash">Cash Flow</span></button>
-            <button class="feature-btn" onclick="showToast('Customer Hisab selected')"><span class="feature-icon">👥</span><span data-i18n="customer">Customer Hisab</span></button>
-            <button class="feature-btn" onclick="showToast('Inventory selected')"><span class="feature-icon">📦</span><span data-i18n="inventory">Inventory</span></button>
-            <button class="feature-btn" onclick="showToast('Smart Reports selected')"><span class="feature-icon">📈</span><span data-i18n="reports">Smart Reports</span></button>
-            <button class="feature-btn" onclick="showToast('AI Assistant selected')"><span class="feature-icon">🤖</span><span data-i18n="ai">AI Assistant</span></button>
+            <button class="feature-btn" onclick="showToast('Sales Record selected')"><span class="feature-icon">📒</span><span data-i18n="sales">Sales</span></button>
+            <button class="feature-btn" onclick="showToast('Purchase Record selected')"><span class="feature-icon">🛒</span><span data-i18n="purchase">Purchase</span></button>
+            <button class="feature-btn" onclick="showToast('Customer Due selected')"><span class="feature-icon">👥</span><span data-i18n="customer">Customer Due</span></button>
+            <button class="feature-btn" onclick="showToast('Cash Flow')"><span class="feature-icon">💰</span><span data-i18n="cash">Cash Flow</span></button>
+            <button class="feature-btn" onclick="showToast('Stock Management selected')"><span class="feature-icon">📦</span><span data-i18n="management">Stock Managment</span></button>
+            <button class="feature-btn" onclick="showToast('Smart Reports selected')"><span class="feature-icon">📈</span><span data-i18n="Reports">Smart Reports</span></button>
           </div>
 
           <div class="reveal">
@@ -1009,8 +1118,18 @@
           <h2 data-i18n="talkTitle">Ready to make your hisaab simpler?</h2>
           <p data-i18n="talkText">Choose how you want to connect. For WhatsApp, the button opens a direct WhatsApp conversation.</p>
           <div class="talk-actions">
-            <a class="btn btn-secondary" href="mailto:hello@example.com?subject=WhatsMyHisaab%20Enquiry">🤝 <span data-i18n="contactSAI">Contact S.AI</span></a>
-            <a class="btn btn-primary" href="https://wa.me/919109134201?text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20talk%20about%20my%20business%20hisaab." target="_blank" rel="noopener">💬 <span data-i18n="whatsappUs">WhatsApp to us</span></a>
+            
+            <a class="btn btn-secondary" href="mailto:susthira.ai.1@gmail.com?
+              subject=WhatsMyHisaab%20Enquiry">
+              🤝 <span data-i18n="contactToUs">Contact To Us</span>
+            </a>
+            <a class="btn btn-primary"
+              href="https://wa.me/919109134201?
+              text=Hello%20WhatsMyHisaab%2C%20I%20want%20to%20talk%20about%20my%20business%20hisaab." 
+              target="_blank" 
+              rel="noopener">
+              💬 <span data-i18n="whatsappUs">WhatsApp to us</span>
+            </a>
           </div>
         </div>
       </div>
@@ -1025,7 +1144,34 @@
   </footer>
 
   <div class="toast" id="toast"></div>
+  
+  <div class="home-image-modal" id="homeImageModal" aria-hidden="true">
+    
+    <div
+      class="home-image-overlay" 
+      onclick="closeHomeImagePopup()">
+      </div>
 
+    <div
+      class="home-image-popup" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-label="Feature image preview">
+      <button
+        class="home-image-close"
+        type="button"
+        onclick="closeHomeImagePopup()"
+        aria-label="Close popup">
+        ×
+      </button>
+
+      <img
+        id="homePopupImage" 
+        src=""
+        alt="WhatsMyHisaab Feature Preview">
+    </div>
+  </div>
+  
   <script>
     const translations = {
       en: {
@@ -1051,12 +1197,12 @@
         hisaabTitle: "Everything your business notebook did — now on WhatsApp, smarter and easier.",
         hisaabLead: "Track what matters to your business. Keep every record organised and access it easily through WhatsApp.",
         featureHeading: "Your Business. Your Hisaab. Your WhatsApp.",
-        sales: "Sales & Purchase",
+        sales: "Sales Record",
+        purchase: "Purchase Record",
+        customer: "Customer Due",
         cash: "Cash Flow",
-        customer: "Customer Hisab",
-        inventory: "Inventory",
+        management: "Stock Management",
         reports: "Smart Reports",
-        ai: "AI Assistant",
         caption: "Your business hisaab, connected with WhatsApp.",
         aboutEyebrow: "About WhatsMyHisaab",
         aboutTitle: "Built for the way businesses manage their daily hisaab — simply, reliably, and on WhatsApp.",
@@ -1085,7 +1231,7 @@
         talkEyebrow: "Talk to us",
         talkTitle: "Ready to make your hisaab simpler?",
         talkText: "Choose how you want to connect. For WhatsApp, the button opens a direct WhatsApp conversation.",
-        contactSAI: "Contact S.AI",
+        contactToUs: "Contact To Us",
         whatsappUs: "WhatsApp to us",
         footer: "Business hisaab, made simpler."
       },
@@ -1096,7 +1242,7 @@
         navTalk: "हमसे बात करें",
         eyebrow: "आप अपने व्यापार पर ध्यान दें, हिसाब की देखभाल हम करेंगे",                      
         heroTitle: 'आप अपने व्यापार पर ध्यान दें,<span class="accent">हिसाब की देखभाल हम करेंगे</span>.',
-        heroLead: "अपने रोज़ के व्यापार का पूरा हिसाब एक जगह रखें। बिक्री, खर्च, ग्राहक का उधार, खरीदारी और स्टॉक — लिखकर या बोलकर सेव करें और ज़रूरत पर साफ़ रिपोर्ट पाएं।",
+        heroLead: "अपने रोज़ के व्यापार का पूरा हिसाब एक जगह रखें। बिक्री, खर्च, ग्राहक का उधार, खरीदारी और माल — लिखकर या बोलकर सेव करें और ज़रूरत पर साफ़ रिपोर्ट पाएं।",
         openWhatsapp: "WhatsApp पर फ्री शुरू करें",
         seeHow: "कैसे काम करता है",
         note1: "टेक्स्ट या वॉइस",
@@ -1108,45 +1254,45 @@
         voiceMessage: "वॉइस मैसेज",
         textMessage: "टेक्स्ट मैसेज",
         pdfGenerate: "PDF बनाएं",
-        stock: "स्टॉक",
+        stock: "माल",
         hisaabTitle: "आपकी  व्यापार  नोटबुक जो भी काम करती थी — अब वही सब WhatsApp पर, और भी स्मार्ट व आसान।",
         hisaabLead: "अपने व्यापार के लिए ज़रूरी चीज़ों का हिसाब रखें। हर रिकॉर्ड को व्यवस्थित रखें और उसे WhatsApp के ज़रिए आसानी से कभी भी देखें।",
         featureHeading: "आपका  व्यापार । आपका हिसाब। आपका WhatsApp।",
-        sales: "बिक्री और खरीद",
-        cash: "कैश फ्लो",
+        sales: "बिक्री",
+        purchase: "खरीद",
         customer: "ग्राहक का हिसाब",
-        inventory: "इन्वेंटरी",
-        reports: "स्मार्ट रिपोर्ट",
-        ai: "AI असिस्टेंट",
+        cash: "आमदनी और खर्च",
+        management: "माल का हिसाब",
+        reports: "हिसाब की रिपोर्ट",
         caption: "आपके  व्यापार  का हिसाब-किताब, WhatsApp से जुड़ा हुआ।",
         aboutEyebrow: "WhatsMyHisaab के बारे में",
         aboutTitle: "आपके रोज़ाना के  व्यापार  हिसाब को आसान और भरोसेमंद तरीके से संभालने के लिए बनाया गया — सीधे WhatsApp पर।",
-        aboutLead: "पुरानी नोटबुक्स और बिखरे हुए नोट्स में ढूँढने की परेशानी को अलविदा कहें। WhatsMyHisaab आपके रोज़ाना के हिसाब-किताब को आसान, व्यवस्थित और प्रभावी बनाता है।",
-        voiceTitle: "वॉइस फ़ीचर",
+        aboutLead: "पुरानी कॉपी और बिखरे हुए नोट्स में ढूँढने की परेशानी को अलविदा कहें। WhatsMyHisaab आपके रोज़ाना के हिसाब-किताब को आसान, व्यवस्थित और प्रभावी बनाता है।",
+        voiceTitle: "वॉइस सुविधा",
         voiceText: "अपने  व्यापार  लेन-देन की जानकारी वॉइस मैसेज के ज़रिए भेजें और WhatsMyHisaab को उसे आपके लिए रिकॉर्ड करने दें।",
-        writeTitle: "लिखकर फ़ीचर",
+        writeTitle: "लिखकर सुविधा",
         writeText: "अपने  व्यापार  की जानकारी WhatsApp मैसेज के तौर पर भेजें और हर एंट्री को एक साफ़-सुथरे, व्यवस्थित डिजिटल रिकॉर्ड में बदलें।",
         pdfTitle: "PDF रिपोर्ट",
         pdfText: "आपके पूरे  व्यापार  हिसाब का रिकॉर्ड एक विस्तृत PDF रिपोर्ट में उपलब्ध है।",
-        privacyBadge: "प्राइवेसी पहले",
-        securityTitle: "आपके  व्यापार  का डेटा, सुरक्षित।",
-        securityText: "आपके  व्यापार  का डेटा सुरक्षा का हक़दार है। WhatsMyHisaab को इस तरह डिज़ाइन किया गया है कि आपका हर रिकॉर्ड निजी, सुरक्षित और गोपनीय रहे।",
-        secure1: " व्यापार  रिकॉर्ड एक व्यवस्थित जगह पर रखें।",
-        secure2: "फिजिकल कॉपी रखने की जगह टेक्स्ट या वॉइस का इस्तेमाल करें।",
-        secure3: "अपने रिकॉर्ड किए हुए हिसाब की साफ़ रिपोर्ट पाएं।",
-        secure4: "आपकी जानकारी गोपनीय और सुरक्षित रखने के उद्देश्य से डिज़ाइन किया गया अनुभव।",
+        privacyBadge: "गोपनीयता पहले",
+        securityTitle: "आपके व्यापार का डेटा, सुरक्षित।",
+        securityText: "आपके व्यापार का डेटा सुरक्षा का हक़दार है। WhatsMyHisaab को इस तरह तैयार किया गया है कि आपका हर रिकॉर्ड निजी, सुरक्षित और गोपनीय रहे।",
+        secure1: " व्यापार का हिसाब एक व्यवस्थित जगह पर रखें।",
+        secure2: " भौतिक कॉपी रखने की जगह लिखकर या बोलकर का इस्तेमाल करें।",
+        secure3: "अपने बोलकर किए हुए हिसाब की साफ़ रिपोर्ट पाएं।",
+        secure4: "आपकी जानकारी गोपनीय और सुरक्षित रखने के उद्देश्य से रूपरेखा किया गया अनुभव।",
         stepsEyebrow: "आसान तरीका",
         stepsTitle: "WhatsApp मैसेज से व्यवस्थित हिसाब तक।",
         step1Title: "भेजें",
-        step1Text: "WhatsApp पर  व्यापार  की एंट्री लिखें या वॉइस मैसेज भेजें।",
+        step1Text: "WhatsApp पर व्यापार की हिसाब लिखें या बोलकर मैसेज भेजें।",
         step2Title: "व्यवस्थित करें",
-        step2Text: "बिक्री, खर्च, उधार, खरीद और इन्वेंटरी के रिकॉर्ड को व्यवस्थित रखें।",
+        step2Text: "बिक्री, खर्च, उधार, खरीद और माल के रिकॉर्ड को व्यवस्थित रखें।",
         step3Title: "देखें",
-        step3Text: "अपने  व्यापार  का हिसाब समझें और जरूरत पड़ने पर रिपोर्ट बनाएं।",
+        step3Text: "अपने व्यापार का हिसाब समझें और जरूरत पड़ने पर रिपोर्ट बनाएं।",
         talkEyebrow: "हमसे बात करें",
         talkTitle: "क्या आपका हिसाब और आसान करने के लिए तैयार हैं?",
         talkText: "जिस तरीके से बात करनी हो, वह चुनें। WhatsApp वाला बटन सीधे WhatsApp बातचीत खोलता है।",
-        contactSAI: "S.AI से संपर्क करें",
+        contactToUs: "हमसे संपर्क करें",
         whatsappUs: "WhatsApp पर बात करें",
         footer: " व्यापार  का हिसाब, अब और आसान।"
       }
@@ -1163,7 +1309,9 @@
         }
       });
 
-      document.getElementById("langBtn").textContent = lang === "en" ? "हिंदी" : "English";
+      document.getElementById("langBtn").textContent = 
+        lang === "en" ? "हिंदी" : "English";
+      
       document.documentElement.lang = lang;
     }
 
@@ -1188,6 +1336,34 @@
         toast.style.display = "none";
       }, 1800);
     }
+
+    function openHomeImagePopup(imagePath, imageAlt) {
+      const modal = document.getElementById("homeImageModal");
+      const image = document.getElementById("homePopupImage");
+
+      image.src = imagePath;
+      image.alt = imageAlt;
+
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("home-popup-open");
+    }
+
+    function closeHomeImagePopup() {
+      const modal = document.getElementById("homeImageModal");
+
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("home-popup-open");
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeHomeImagePopup();
+      }
+    });
 
     document.querySelectorAll("nav a").forEach((link) => {
       link.addEventListener("click", () => {
