@@ -134,15 +134,6 @@
       flex-shrink: 0;
     }
 
-    .brand-logo-svg {
-      width: clamp(28px, 2.6vw, 42px);
-      height: clamp(28px, 2.6vw, 42px);
-      border-radius: 11px;
-      background: #fff;
-      border: 1px solid var(--line);
-      box-shadow: 0 2px 6px rgba(12, 35, 64, 0.08);
-    }
-
     .nav-center-wrap {
       display: flex;
       align-items: center;
@@ -162,6 +153,7 @@
       color: #506079;
       transition: color 0.2s;
       white-space: nowrap;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -420,15 +412,9 @@
     }
 
     @keyframes pulseHighlight {
-      0% {
-        box-shadow: 0 0 0 0 rgba(24, 182, 99, 0.5);
-      }
-      70% {
-        box-shadow: 0 0 0 12px rgba(24, 182, 99, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(24, 182, 99, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(24, 182, 99, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(24, 182, 99, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(24, 182, 99, 0); }
     }
 
     .quick-btn-free:hover {
@@ -526,19 +512,6 @@
       color: #fff;
       border-color: var(--green);
       transform: rotate(180deg);
-    }
-
-    @media (hover: hover) and (min-width: 901px) {
-      .biz-card:hover .biz-card-details {
-        display: block;
-        animation: smoothFade 0.25s ease-in-out;
-      }
-      .biz-card:hover .biz-toggle-btn {
-        background: var(--green);
-        color: #fff;
-        border-color: var(--green);
-        transform: rotate(180deg);
-      }
     }
 
     @keyframes smoothFade {
@@ -756,7 +729,7 @@
       background: #020617;
     }
 
-   .feature-card-back img.hisab-crop-img {
+    .feature-card-back img.hisab-crop-img {
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
@@ -806,61 +779,6 @@
       color: var(--muted);
       font-size: clamp(0.88rem, 1.1vw, 1rem);
       line-height: 1.55;
-    }
-
-    .security {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #102e50, #164263);
-      color: #fff;
-      border: 1.8px solid rgba(85, 220, 145, 0.35);
-      border-radius: clamp(20px, 2.5vw, 28px);
-      padding: clamp(24px, 3.5vw, 42px) clamp(18px, 3vw, 36px);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(20px, 3vw, 36px);
-      align-items: center;
-      width: 100%;
-      box-shadow: 0 16px 40px rgba(12, 35, 64, 0.2);
-    }
-
-    @media (min-width: 850px) {
-      .security {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .security h2 {
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      line-height: 1.25;
-      margin: 10px 0;
-      color: #fff;
-    }
-
-    .security p {
-      color: #d2dfeb;
-      font-size: clamp(0.88rem, 1.1vw, 1.02rem);
-    }
-
-    .security-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .security-item {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 10px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 13px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: clamp(0.84rem, 1vw, 0.94rem);
-    }
-
-    .check {
-      color: #71e8a0;
-      font-weight: 900;
     }
 
     .reviews-grid {
@@ -1055,6 +973,40 @@
       padding-top: 20px;
     }
 
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 10px 0;
+    }
+
+    .social-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      box-shadow: 0 2px 6px rgba(12, 35, 64, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .social-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .social-icon-btn:hover {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+      transform: translateY(-2px);
+    }
+
     .floating-wa {
       position: fixed;
       bottom: 22px;
@@ -1075,6 +1027,92 @@
 
     .floating-wa:active {
       transform: scale(0.92);
+    }
+
+    /* Full-Screen About Page Overlay Styles */
+    .about-fullscreen-page {
+      position: fixed;
+      inset: 0;
+      z-index: 20000;
+      display: none;
+      background: var(--cream);
+      overflow-y: auto;
+      padding: clamp(20px, 4vw, 50px) 16px;
+    }
+
+    .about-fullscreen-page.show {
+      display: block;
+      animation: fadeInPage 0.3s ease-in-out;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .about-page-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1.8px solid var(--box-border);
+      border-radius: 28px;
+      padding: clamp(24px, 4vw, 50px);
+      box-shadow: var(--box-shadow);
+      position: relative;
+    }
+
+    .about-page-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--mint);
+      border: 1.5px solid var(--green);
+      color: var(--green-dark);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+
+    .about-page-close:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .about-body h2 {
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      color: var(--navy);
+      margin-bottom: 18px;
+      font-weight: 850;
+      padding-right: 45px;
+    }
+
+    .about-body h3 {
+      font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+      color: var(--green-dark);
+      margin: 22px 0 10px;
+      font-weight: 800;
+    }
+
+    .about-body p {
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .about-page-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      border-top: 1.5px solid var(--line);
+      padding-top: 24px;
     }
 
     .scanner-popup-modal {
@@ -1249,6 +1287,7 @@
           <a href="#demo" data-i18n="navDemo">सीधा प्रदर्शन</a>
           <a href="#hisaab" data-i18n="navHisaab">फीचर्स</a>
           <a href="#sliderSection" data-i18n="navSlider">सुविधाएं</a>
+          <a onclick="openAboutPage()" data-i18n="navAbout">हमारे बारे में</a>
           <a href="#reviews" data-i18n="navReviews">रिव्यूज</a>
           <a href="#faq" data-i18n="navFaq">सवाल-जवाब</a>
           <a href="#talk" data-i18n="navTalk">हमसे बात करें</a>
@@ -1542,25 +1581,6 @@
       </div>
     </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="security">
-          <div>
-            <div class="eyebrow" style="background:rgba(85,220,145,.12);border-color:rgba(85,220,145,.25);color:#8df0b4" data-i18n="privacyBadge">गोपनीयता पहले</div>
-            <h2 data-i18n="securityTitle">आपके व्यापार का डेटा, सुरक्षित।</h2>
-            <p data-i18n="securityText">आपके व्यापार का डेटा सुरक्षा का हक़दार है। WhatsMyHisaab को इस तरह तैयार किया गया है कि आपका हर रिकॉर्ड निजी, सुरक्षित और गोपनीय रहे।</p>
-          </div>
-
-          <div class="security-list">
-            <div class="security-item"><span class="check">✓</span><span data-i18n="secure1">व्यापार का हिसाब एक व्यवस्थित जगह पर रखें।</span></div>
-            <div class="security-item"><span class="check">✓</span><span data-i18n="secure2">कॉपी की जगह लिखकर, बोलकर या फोटो स्कैन करके हिसाब जोड़ें।</span></div>
-            <div class="security-item"><span class="check">✓</span><span data-i18n="secure3">अपने पूरे हिसाब की साफ़ PDF रिपोर्ट पाएं।</span></div>
-            <div class="security-item"><span class="check">✓</span><span data-i18n="secure4">आपकी जानकारी गोपनीय और सुरक्षित रहती है।</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="reviews" style="background: #ffffff;">
       <div class="container">
         <div class="section-head" style="text-align: center; margin: 0 auto 22px;">
@@ -1690,13 +1710,43 @@
     </section>
   </main>
   
+  <!-- Footer with Real Social Media Icons -->
   <footer>
-    <div class="container footer-inner" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 25px 0;">
-      <div style="font-weight: 800; color: var(--navy); font-size: 1rem; letter-spacing: 0.3px;">
+    <div class="container footer-inner" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 25px 0;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 2px;">
+        <img src="logo.jpg" alt="Logo" style="width: 28px; height: 28px; object-fit: contain; border-radius: 6px; border: 1px solid var(--line);">
+        <span style="font-weight: 855; color: var(--navy); font-size: 1.05rem;">WhatsMy<span style="color:var(--green)">Hisaab</span></span>
+      </div>
+
+      <!-- Real Social Media SVG Icons -->
+      <div class="footer-socials">
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon-btn" title="Twitter / X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon-btn" title="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+
+      <div style="font-weight: 800; color: var(--navy); font-size: 1rem; letter-spacing: 0.3px;" data-i18n="footerLine1">
         🇮🇳 गल्ले की पाई-पाई और डायरी का हिसाब, अब WhatsApp पर।
       </div>
       <div style="color: var(--muted); font-size: 0.86rem;">
-        © <span id="year"></span> WhatsMyHisaab• भारतीय व्यापारियों के लिए समर्पित ❤️
+        © <span id="year"></span> WhatsMyHisaab • <span data-i18n="footerLine2">भारतीय व्यापारियों के लिए समर्पित ❤️</span>
       </div>
       <div style="font-size: 0.8rem; color: #788ba3; margin-top: 4px;" data-i18n="footer">
         पुरानी डायरी छोड़ें, आज ही अपने व्यापार को डिजिटल बनाएं
@@ -1707,6 +1757,48 @@
   <a href="https://wa.me/919109134201?text=नमस्कार!%20WhatsMy%20Hisaab%2C%20में%20आपका%20स्वागत%20है!" class="floating-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     💬
   </a>
+
+  <!-- Full-Screen About Us Page -->
+  <div class="about-fullscreen-page" id="aboutFullscreenPage" aria-hidden="true">
+    <div class="about-page-container">
+      <button class="about-page-close" type="button" onclick="closeAboutPage()" aria-label="Close">✕</button>
+      
+      <div class="about-body">
+        <h2 data-i18n="abMainTitle">हमारे बारे में</h2>
+        
+        <h3 data-i18n="abSub1">आपके कारोबार का हिसाब—अब WhatsApp पर आसान</h3>
+        <p data-i18n="abText1">कारोबार चलाने का मतलब सिर्फ़ बिक्री करना नहीं है। रोज़ की खरीदारी, खर्च, स्टॉक और ग्राहकों के बकाया भुगतान का हिसाब रखना भी उतना ही ज़रूरी है। इन सबका रिकॉर्ड रखना आपके काम को मुश्किल नहीं बनाना चाहिए।</p>
+        <p data-i18n="abText2">WhatsMyHisaab डेयरी संचालकों, दुकानदारों और छोटे कारोबारियों को WhatsApp के ज़रिए रोज़मर्रा का हिसाब संभालने में मदद करता है। आप बोलकर या लिखकर अपने लेन-देन दर्ज कर सकते हैं—एक ऐसे तरीके से, जिससे आप पहले से परिचित हैं।</p>
+
+        <h3 data-i18n="abSub2">WhatsMyHisaab क्या है?</h3>
+        <p data-i18n="abText3">WhatsMyHisaab बोलकर कारोबार का हिसाब दर्ज करने वाला एक डिजिटल टूल है। यह बिक्री, खरीदारी, खर्च, स्टॉक और उधार के रिकॉर्ड को WhatsApp के ज़रिए संभालना आसान बनाता है, ताकि हिसाब लिखने में कम समय लगे और आप अपने कारोबार पर ज़्यादा ध्यान दे सकें।</p>
+        <p data-i18n="abText4">चाहे आप डेयरी चलाते हों या कोई स्थानीय दुकान, हमारा उद्देश्य एक ही है—रोज़ का हिसाब समझना और उसे नियमित रूप से दर्ज करना आसान बनाना।</p>
+
+        <h3 data-i18n="abSub3">यह कैसे काम करता है?</h3>
+        <p><strong data-i18n="abPoint1Title">बोलकर या लिखकर जानकारी दें:</strong> <span data-i18n="abPoint1Desc">अपने लेन-देन की जानकारी WhatsApp पर वॉइस मैसेज या टेक्स्ट के ज़रिए भेजें।</span></p>
+        <p><strong data-i18n="abPoint2Title">रोज़ का लेन-देन दर्ज करें:</strong> <span data-i18n="abPoint2Desc">बिक्री, खरीदारी, खर्च और उधार का हिसाब अपने रोज़मर्रा के काम के साथ दर्ज करते जाएँ।</span></p>
+        <p><strong data-i18n="abPoint3Title">अपने रिकॉर्ड व्यवस्थित रखें:</strong> <span data-i18n="abPoint3Desc">कारोबार का रिकॉर्ड व्यवस्थित रखें, ताकि बकाया भुगतान पर नज़र रखना और स्टॉक व पैसों के आने-जाने को समझना आसान हो।</span></p>
+
+        <h3 data-i18n="abSub4">डेयरी और छोटे कारोबारों की ज़रूरतों को ध्यान में रखकर बनाया गया</h3>
+        <p data-i18n="abText5">डेयरी के काम में हर दिन की बिक्री, खरीदारी, खर्च और ग्राहकों के उधार का हिसाब कागज़ पर संभालना मुश्किल हो सकता है। WhatsMyHisaab इन रोज़मर्रा के लेन-देन को दर्ज करना आसान बनाने के लिए बनाया गया है।</p>
+        <p data-i18n="abText6">यह उन दुकानदारों और छोटे कारोबारियों के लिए भी है, जो बिना किसी जटिल प्रक्रिया के अपना हिसाब व्यवस्थित रखना चाहते हैं।</p>
+
+        <h3 data-i18n="abSub5">हमारा उद्देश्य</h3>
+        <p data-i18n="abText7">हमारा उद्देश्य छोटे कारोबारियों के लिए हिसाब रखना आसान और सुलभ बनाना है—जानी-पहचानी बातचीत, रोज़मर्रा की भाषा और WhatsApp की सुविधा के साथ।</p>
+        <p data-i18n="abText8">हम मानते हैं कि हिसाब अपडेट रखना आपके काम का आसान हिस्सा होना चाहिए, कोई अलग बोझ नहीं।</p>
+
+        <h3 data-i18n="abSub6">आसान हिसाब की शुरुआत करें</h3>
+        <p data-i18n="abText9">जानिए कि WhatsMyHisaab आपके कारोबार के रोज़मर्रा के रिकॉर्ड को व्यवस्थित रखने में कैसे मदद कर सकता है।</p>
+
+        <div class="about-page-actions">
+          <button class="btn btn-secondary" onclick="closeAboutPage()" style="width: auto; padding: 12px 24px; font-size: 0.95rem;" data-i18n="abBtnWork">यह कैसे काम करता है?</button>
+          <a class="btn btn-primary" href="https://wa.me/919109134201?text=नमस्कार!%20WhatsMy%20Hisaab%2C%20में%20आपका%20स्वागत%20है!" target="_blank" rel="noopener" style="width: auto; padding: 12px 24px; font-size: 0.95rem;">
+            💬 <span data-i18n="abBtnStart">WhatsApp पर शुरुआत करें</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="scanner-popup-modal" id="liveScannerModal" aria-hidden="true">
     <div class="scanner-popup-overlay" onclick="closeLiveScannerPopup()"></div>
@@ -1747,12 +1839,13 @@
         navDemo: "सीधा प्रदर्शन",
         navHisaab: "फीचर्स",
         navSlider: "सुविधाएं",
+        navAbout: "हमारे बारे में",
         navReviews: "रिव्यूज",
         navFaq: "सवाल-जवाब",
         navTalk: "हमसे बात करें",
         topScan: "Scan Bill",
         eyebrow: "हुकुम मेरे आका, बोलो कितना हिसाब लिखना है?",
-        heroTitle: 'आप अपने व्यापार पर ध्यान दें, <span class="accent">हिसाब की देखभाल हम करें।</span>',
+        heroTitle: 'आप अपने व्यापार पर ध्यान दें, <span class="accent">हिसाब की देखभाल हम करेंगे।</span>',
         heroLead: "अपने रोज़ के व्यापार का पूरा हिसाब एक जगह रखें। बिक्री, खर्च, ग्राहक का उधार, खरीदारी और माल — लिखकर, बोलकर या बिल स्कैन करके सेव करें और ज़रूरत पर साफ़ रिपोर्ट पाएं।",
         openWhatsapp: "WhatsApp पर फ्री शुरू करें",
         seeDemo: "सीधा प्रदर्शन देखें",
@@ -1796,13 +1889,8 @@
         writeText: "अपने व्यापार की जानकारी WhatsApp मैसेज के तौर पर भेजें और हर एंट्री को एक साफ़-सुथरे डिजिटल रिकॉर्ड में बदलें।",
         pdfTitle: "PDF रिपोर्ट",
         pdfText: "आपके पूरे व्यापार हिसाब का रिकॉर्ड एक विस्तृत PDF रिपोर्ट में उपलब्ध है।",
-        privacyBadge: "गोपनीयता पहले",
-        securityTitle: "आपके व्यापार का डेटा, सुरक्षित।",
+        securityTitle: "100% डेटा सुरक्षित",
         securityText: "आपके व्यापार का डेटा सुरक्षा का हक़दार है। WhatsMyHisaab में आपका हर रिकॉर्ड निजी, सुरक्षित और गोपनीय रहता है।",
-        secure1: "व्यापार का हिसाब एक व्यवस्थित जगह पर रखें।",
-        secure2: "कॉपी की जगह लिखकर, बोलकर या फोटो स्कैन करके हिसाब जोड़ें।",
-        secure3: "अपने पूरे हिसाब की साफ़ PDF रिपोर्ट पाएं।",
-        secure4: "आपकी जानकारी गोपनीय और सुरक्षित रहती है।",
         reviewsEyebrow: "ग्राहकों की राय",
         reviewsTitle: "व्यापारियों का भरोसा",
         reviewsLead: "देखें कैसे भारत के दुकानदार और व्यापारी WhatsMyHisaab से अपना हिसाब आसान बना रहे हैं।",
@@ -1830,18 +1918,46 @@
         talkText: "जिस तरीके से बात करनी हो, वह चुनें। WhatsApp वाला बटन सीधे बातचीत खोलता है।",
         contactToUs: "हमसे संपर्क करें",
         whatsappUs: "WhatsApp पर बात करें",
+        footerLine1: "🇮🇳 गल्ले की पाई-पाई और डायरी का हिसाब, अब WhatsApp पर।",
+        footerLine2: "भारतीय व्यापारियों के लिए समर्पित ❤️",
         footer: "पुरानी डायरी छोड़ें, आज ही अपने व्यापार को डिजिटल बनाएं",
         scannerModalTitle: "📸 OCR बिल स्कैनर",
         scannerModalSubtitle: "बिल या पर्ची को फ्रेम के अंदर रखें",
         scannerFrameHint: "यहाँ स्कैन करें",
         btnTakeCam: "कैमरा खोलें",
-        btnUploadDoc: "गैलरी / फाइल"
+        btnUploadDoc: "गैलरी / फाइल",
+        // About Page Content HI
+        abMainTitle: "हमारे बारे में",
+        abSub1: "आपके कारोबार का हिसाब—अब WhatsApp पर आसान",
+        abText1: "कारोबार चलाने का मतलब सिर्फ़ बिक्री करना नहीं है। रोज़ की खरीदारी, खर्च, स्टॉक और ग्राहकों के बकाया भुगतान का हिसाब रखना भी उतना ही ज़रूरी है। इन सबका रिकॉर्ड रखना आपके काम को मुश्किल नहीं बनाना चाहिए।",
+        abText2: "WhatsMyHisaab डेयरी संचालकों, दुकानदारों और छोटे कारोबारियों को WhatsApp के ज़रिए रोज़मर्रा का हिसाब संभालने में मदद करता है। आप बोलकर या लिखकर अपने लेन-देन दर्ज कर सकते हैं—एक ऐसे तरीके से, जिससे आप पहले से परिचित हैं।",
+        abSub2: "WhatsMyHisaab क्या है?",
+        abText3: "WhatsMyHisaab बोलकर कारोबार का हिसाब दर्ज करने वाला एक डिजिटल टूल है। यह बिक्री, खरीदारी, खर्च, स्टॉक और उधार के रिकॉर्ड को WhatsApp के ज़रिए संभालना आसान बनाता है, ताकि हिसाब लिखने में कम समय लगे और आप अपने कारोबार पर ज़्यादा ध्यान दे सकें।",
+        abText4: "चाहे आप डेयरी चलाते हों या कोई स्थानीय दुकान, हमारा उद्देश्य एक ही है—रोज़ का हिसाब समझना और उसे नियमित रूप से दर्ज करना आसान बनाना।",
+        abSub3: "यह कैसे काम करता है?",
+        abPoint1Title: "बोलकर या लिखकर जानकारी दें:",
+        abPoint1Desc: "अपने लेन-देन की जानकारी WhatsApp पर वॉइस मैसेज या टेक्स्ट के ज़रिए भेजें।",
+        abPoint2Title: "रोज़ का लेन-देन दर्ज करें:",
+        abPoint2Desc: "बिक्री, खरीदारी, खर्च और उधार का हिसाब अपने रोज़मर्रा के काम के साथ दर्ज करते जाएँ।",
+        abPoint3Title: "अपने रिकॉर्ड व्यवस्थित रखें:",
+        abPoint3Desc: "कारोबार का रिकॉर्ड व्यवस्थित रखें, ताकि बकाया भुगतान पर नज़र रखना और स्टॉक व पैसों के आने-जाने को समझना आसान हो।",
+        abSub4: "डेयरी और छोटे कारोबारों की ज़रूरतों को ध्यान में रखकर बनाया गया",
+        abText5: "डेयरी के काम में हर दिन की बिक्री, खरीदारी, खर्च और ग्राहकों के उधार का हिसाब कागज़ पर संभालना मुश्किल हो सकता है। WhatsMyHisaab इन रोज़मर्रा के लेन-देन को दर्ज करना आसान बनाने के लिए बनाया गया है।",
+        abText6: "यह उन दुकानदारों और छोटे कारोबारियों के लिए भी है, जो बिना किसी जटिल प्रक्रिया के अपना हिसाब व्यवस्थित रखना चाहते हैं।",
+        abSub5: "हमारा उद्देश्य",
+        abText7: "हमारा उद्देश्य छोटे कारोबारियों के लिए हिसाब रखना आसान और सुलभ बनाना है—जानी-पहचानी बातचीत, रोज़मर्रा की भाषा और WhatsApp की सुविधा के साथ।",
+        abText8: "हम मानते हैं कि हिसाब अपडेट रखना आपके काम का आसान हिस्सा होना चाहिए, कोई अलग बोझ नहीं।",
+        abSub6: "आसान हिसाब की शुरुआत करें",
+        abText9: "जानिए कि WhatsMyHisaab आपके कारोबार के रोज़मर्रा के रिकॉर्ड को व्यवस्थित रखने में कैसे मदद कर सकता है।",
+        abBtnWork: "यह कैसे काम करता है?",
+        abBtnStart: "WhatsApp पर शुरुआत करें"
       },
       en: {
         navHome: "Home",
         navDemo: "Live Demo",
         navHisaab: "Features",
         navSlider: "Services",
+        navAbout: "About Us",
         navReviews: "Reviews",
         navFaq: "FAQ",
         navTalk: "Talk to us",
@@ -1884,24 +2000,19 @@
         carouselTitle: "Built for Busy Business Owners",
         carouselLead: "Swipe the slider to explore smart bookkeeping features.",
         ocrTitle: "📸 What is OCR Bill Scanner?",
-        ocrFullDesc: "Snap a photo of any printed invoice or handwritten paper slip. Khata Genie's OCR automatically reads dates, items, and total amount to log the entry directly.",
+        ocrFullDesc: "Snap a photo of any printed invoice or handwritten paper slip. WhatsMyHisaab's OCR automatically reads dates, items, and total amount to log the entry directly.",
         voiceTitle: "Voice Feature",
         voiceText: "Send your business transaction details through a voice message and let WhatsMyHisaab record them for you.",
         writeTitle: "Written Feature",
         writeText: "Send your business details as a WhatsApp message and turn every entry into a clear, organised digital record.",
         pdfTitle: "PDF Reports",
         pdfText: "Your complete business hisaab is available in a detailed PDF report.",
-        privacyBadge: "Privacy first",
-        securityTitle: "Your Business Data, Protected.",
+        securityTitle: "100% Data Protected",
         securityText: "Your business data deserves protection. WhatsMyHisaab is designed to keep every record private, secure, and confidential.",
-        secure1: "Keep business records organised in one dedicated experience.",
-        secure2: "Use text, voice, or bill photos instead of paper registers.",
-        secure3: "Get your recorded hisaab in a clear report format.",
-        secure4: "Your information is intended to remain confidential and protected.",
         reviewsEyebrow: "Customer Feedback",
         reviewsTitle: "Loved by Business Owners",
-        reviewsLead: "See how Indian shopkeepers and traders manage their daily ledger with Khata Genie.",
-        r1_text: "\"Earlier I used to forget writing in physical registers. Now I just take a photo of the bill or send a voice note, Genie does the rest!\"",
+        reviewsLead: "See how Indian shopkeepers and traders manage their daily ledger with WhatsMyHisaab.",
+        r1_text: "\"Earlier I used to forget writing in physical registers. Now I just take a photo of the bill or send a voice note, WhatsMyHisaab does the rest!\"",
         r1_biz: "Kirana Store Owner, Indore",
         r2_text: "\"The instant PDF report feature is wonderful. At month-end, I get a clear summary of all dues and supplier balances in 2 seconds.\"",
         r2_biz: "Hardware & Paints, Bhopal",
@@ -1911,9 +2022,9 @@
         faqTitle: "Frequently Asked Questions",
         faqLead: "Everything you need to know about WhatsMyHisaab and how it handles your accounts.",
         q_ocr: "How does OCR bill scanning work?",
-        a_ocr: "Simply capture a photo of your purchase bill or handwritten slip and send it on WhatsApp. Khata Genie's OCR extracts the date, line items, and total amount to update your accounts immediately.",
+        a_ocr: "Simply capture a photo of your purchase bill or handwritten slip and send it on WhatsApp. WhatsMyHisaab's OCR extracts the date, line items, and total amount to update your accounts immediately.",
         q1: "How does WhatsMyHisaab work on WhatsApp?",
-        a1: "You just need to send a message or voice note on WhatsApp (e.g., 'Ramesh paid 500' or 'Purchased milk for 120'). Khata Genie's smart AI automatically categorizes and records the transaction into your digital ledger.",
+        a1: "You just need to send a message or voice note on WhatsApp (e.g., 'Ramesh paid 500' or 'Purchased milk for 120'). WhatsMyHisaab's smart AI automatically categorizes and records the transaction into your digital ledger.",
         q2: "Can I speak in Hindi or local language?",
         a2: "Yes! WhatsMyHisaab understands natural spoken Hindi, Hinglish, and English voice notes fluently. Speak as you normally talk to customers.",
         q3: "Is my financial data safe and confidential?",
@@ -1925,12 +2036,39 @@
         talkText: "Choose how you want to connect. For WhatsApp, the button opens a direct WhatsApp conversation.",
         contactToUs: "Contact Us",
         whatsappUs: "WhatsApp to us",
+        footerLine1: "🇮🇳 Every penny of your cash drawer and register, now on WhatsApp.",
+        footerLine2: "Dedicated to Indian Business Owners ❤️",
         footer: "Ditch the old diary—digitize your business today.",
         scannerModalTitle: "📸 OCR Bill Scanner",
         scannerModalSubtitle: "Position invoice or receipt within the frame",
         scannerFrameHint: "Scan receipt here",
         btnTakeCam: "Open Camera",
-        btnUploadDoc: "Gallery / Files"
+        btnUploadDoc: "Gallery / Files",
+        // About Page Content EN
+        abMainTitle: "About Us",
+        abSub1: "Your Business Hisaab—Now Easy on WhatsApp",
+        abText1: "Running a business is not just about making sales. Keeping track of daily purchases, expenses, stock, and customer dues is equally important. Maintaining records shouldn't make your work difficult.",
+        abText2: "WhatsMyHisaab helps dairy operators, shopkeepers, and small business owners manage daily accounts through WhatsApp. You can record transactions by speaking or typing—in a way you are already familiar with.",
+        abSub2: "What is WhatsMyHisaab?",
+        abText3: "WhatsMyHisaab is a digital tool to record business accounts through voice and text. It makes managing sales, purchases, expenses, stock, and credit records via WhatsApp seamless, saving you time to focus on your business.",
+        abText4: "Whether you run a dairy or a local shop, our goal is one—to make understanding and regularly recording daily accounts simple.",
+        abSub3: "How does it work?",
+        abPoint1Title: "Share via Voice or Text:",
+        abPoint1Desc: "Send transaction details via voice notes or text messages on WhatsApp.",
+        abPoint2Title: "Record Daily Transactions:",
+        abPoint2Desc: "Log sales, purchases, expenses, and credit alongside your daily routine.",
+        abPoint3Title: "Keep Records Organized:",
+        abPoint3Desc: "Keep your business records structured to easily track pending payments, stock, and cash flow.",
+        abSub4: "Built for Dairies and Small Businesses",
+        abText5: "Managing daily sales, purchases, expenses, and customer credit on paper for a dairy can be challenging. WhatsMyHisaab is built to make recording these daily transactions effortless.",
+        abText6: "It is also ideal for shopkeepers and small business owners who want to organize their accounts without complex software.",
+        abSub5: "Our Purpose",
+        abText7: "Our purpose is to make bookkeeping simple and accessible for small business owners—combining familiar conversation, everyday language, and WhatsApp convenience.",
+        abText8: "We believe keeping accounts updated should be an effortless part of your work, not an added burden.",
+        abSub6: "Start Simplified Accounting",
+        abText9: "Discover how WhatsMyHisaab can help keep your business daily records organized.",
+        abBtnWork: "How it works?",
+        abBtnStart: "Start on WhatsApp"
       }
     };
 
@@ -1992,6 +2130,24 @@
       }
     }
 
+    function openAboutPage() {
+      const page = document.getElementById("aboutFullscreenPage");
+      if (page) {
+        page.classList.add("show");
+        page.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeAboutPage() {
+      const page = document.getElementById("aboutFullscreenPage");
+      if (page) {
+        page.classList.remove("show");
+        page.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "auto";
+      }
+    }
+
     function openLiveScannerPopup() {
       const modal = document.getElementById("liveScannerModal");
       if (modal) {
@@ -2032,6 +2188,7 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
         closeLiveScannerPopup();
+        closeAboutPage();
       }
     });
 
